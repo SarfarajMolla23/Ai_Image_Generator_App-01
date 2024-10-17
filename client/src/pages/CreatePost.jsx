@@ -7,6 +7,7 @@ import { FormField, Loader } from "../components";
 
 const CreatePost = () => {
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     prompt: "",
@@ -39,10 +40,10 @@ const CreatePost = () => {
       <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
-            labelName="Your name"
+            labelName="Your Name"
             type="text"
             name="name"
-            placeholder="Raju"
+            placeholder="Ex., john doe"
             value={form.name}
             handleChange={handleChange}
           />
@@ -50,7 +51,7 @@ const CreatePost = () => {
             labelName="Prompt"
             type="text"
             name="prompt"
-            placeholder="A Samurai riding a Horse on Mars, lomography"
+            placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
             value={form.prompt}
             handleChange={handleChange}
             isSurpriseMe

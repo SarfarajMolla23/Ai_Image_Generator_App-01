@@ -6,6 +6,7 @@
 4. Cloudinary
 5. DALL-E Api
 
+  But after sometime you cannot generate picture because openai has now become paid and not giving free access to try.
   
 7. You can see other post and can generate your own Image using this Ai-Image generator  and can post it to the community by clicking share button.
 

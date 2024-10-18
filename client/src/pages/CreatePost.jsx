@@ -17,8 +17,56 @@ const CreatePost = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setloading] = useState(false);
 
-  const generateImage = () => {};
-  const handleSubmit = () => {};
+  const generateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch("http://localhost:8080/api/v1/vision", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+
+        const data = await response.json();
+
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        alert(error);
+      } finally {
+        setGeneratingImg(false);
+      }
+    } else {
+      alert("Please enter a prompt");
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (form.prompt && form.photo) {
+      setloading(true);
+
+      try {
+        const response = await fetch("http://localhost:8080/api/v1/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ form }),
+        });
+
+        await response.json();
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      } finally {
+        setloading(false);
+      }
+    }else{
+      alert("Please enter a prompt and generate an image")
+    }
+  };
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -85,7 +133,7 @@ const CreatePost = () => {
           <button
             type="button"
             onClick={generateImage}
-            className="text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            className="bg-gradient-to-br from-indigo-500 to-cyan-400 text-white rounded-lg px-6 py-3 text-lg shadow-md hover:bg-indigo-600 transition duration-300 ease-in-out"
           >
             {generatingImg ? "Generating..." : "Generate"}
           </button>

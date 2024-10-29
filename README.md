@@ -1,16 +1,29 @@
-# AI IMAGE GENERATOR WEB APP
+# AI Image Generator Web App
 
-ToolsUsed:
-1. Vite + React
-2. NodeJs (ExpressJs)
-3. Mongodb
-4. Cloudinary
-5. DALL-E Api
+This web application allows users to generate images using AI, share them with a community, and view images posted by others.
 
-But after sometime you cannot generate picture because openai has now become paid and not giving free access to try.
+## Technologies and Tools Used
+
+1. **Vite** + **React** (Frontend)
+2. **Node.js** with **Express.js** (Backend)
+3. **MongoDB** (Database)
+4. **Cloudinary** (Image Storage)
+5. **DALL-E API** (Image Generation)
+
+> **Note**: After a certain limit, image generation may be restricted due to DALL-E API usage costs, as OpenAI’s API is now paid.
+
+## Features
+
+1. **Community Gallery**:
+   - View images generated and shared by other users within the community.
+
+2. **AI-Powered Image Generation**:
+   - Generate unique images by providing text prompts through the DALL-E API.
+
+3. **Share with the Community**:
+   - Post generated images to the community gallery by clicking the **Share** button.
 
 
-How it works: You can see other post and can generate your own Image using this Ai-Image generator  and can post it to the community by clicking share button.
 
 Snapshots:
 
